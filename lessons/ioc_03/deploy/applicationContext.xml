@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	
+	<!-- Flashvars -->
+	<var id="textSize" type="Number" value="12" />
+	<var id="appFont" type="String" value="Arial" />
+	
+	<!-- Loads library -->
+	<lib url="sandbox://pixlib.swf" />
+	
+	<!-- Loads resource, binary format and use deserializer -->
+	<rsc id="gridObject" 
+		url="sandbox://grid.png" 
+		type="binary" 
+		deserializer-class="net.pixlib.encoding.PXDisplayDeserializer"/>
+	
+	<!-- Loads resource, text format -->
+	<rsc id="infoText" 
+		url="sandbox://info.txt" 
+		type="text"/>
+	
+	<!-- Loads resource, binary format, use deserializer and dedicated locator --> 	
+	<rsc id="background" 
+		url="sandbox://background.png" 
+		type="binary" 
+		deserializer-class="net.pixlib.encoding.PXDisplayDeserializer" 
+		locator="bitmap"/>
+	
+	<!-- Loads css resource, text format, use deserializer -->
+	<rsc id="style" 
+		url="sandbox://styles.css" 
+		type="text" 
+		deserializer-class="net.pixlib.encoding.PXCSSDeserializer"/>
+	
+	<!-- Object -->
+	<bean id="store" type="Object">
+		<property name="resource" ref="ResourceLocator(bitmap,background)" />
+	</bean>
+	
+	<!-- Plugin library code -->
+	<dll url="sandbox://pluginA.swf" />
+	
+	<!-- Plugin bean -->
+	<bean id="PluginA" type="pluginA.PluginA" />
+	
+	<!-- object -->
+	<bean id="textColor" type="Number" value="0xFF0000" />
+</beans>

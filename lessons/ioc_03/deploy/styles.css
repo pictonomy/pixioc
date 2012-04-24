@@ -1,0 +1,78 @@
+.default
+{
+	font-size: Copy(".recu");
+}
+
+.recu
+{
+	font-size: FlashVar("textSize");	
+}
+
+.text.recu
+{
+	font-size: FlashVar("textSize");
+}
+	
+.text, .text2
+{
+	color: #FF0000;
+	font-size: Copy(".default");
+	font-weight: bold;
+	text-align: left;
+	text-decoration: underline;
+	margin-left: 10px;
+	margin-right: 10px;
+	letter-spacing: 5px;
+	text-indent: 30px;
+	
+	background-color: #0000FF;
+	border-color: #FF0000;
+	
+	selectable: false;
+}
+
+.text.title
+{
+	color:#FFFFFF;	
+}
+
+.myclass
+{ 
+	StyleClassAlias: pluginA.StyleVO;
+	
+	font-size:16px;
+	
+	font-weight: bold;
+	color: #00FF00;
+	
+	age: 32;
+	
+	width:100;
+	width1:100;
+	width2:100px;
+	width3: 100px;
+	width4:100px;
+	width5: 100px;
+	width6:   100px;
+	width7: 100 px;
+	
+	myStrat: ClassReference("net.pixlib.encoding.PXCSSDeserializer");
+	
+	effect: Filters("flash.filters.DropShadowFilter", 4, 45, 0xFF0000, 0.5);
+	shadow: Filter("flash.filters.DropShadowFilter", 10, 45, 0xFFOOOO, 0.5);
+	sizeRange: Instance("net.pixlib.structures.PXRange", 2, 50);
+	infos: Instance("Array", "AS3", "Opensource", 10.1);
+	
+	background-image: ResourceLocator("bitmap", "background");
+	
+	color: CoreFactory("textColor");
+	
+	font-family: FlashVar("appFont");
+}
+
+.myclass.mypimp
+{
+	myStrat: ClassReference("net.pixlib.structures.PXDimension");
+	myName: Romain Ecarnot;
+	age:33;
+}

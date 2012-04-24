@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	<dll url="sandbox://pluginA.swf" />
+	
+	<bean id="PluginA" type="pluginA.PluginA">
+		<listen ref="PluginB" />
+	</bean>
+	
+	<dll url="sandbox://pluginB.swf" />	
+	<bean id="PluginB" type="pluginB.PluginB" />
+	
+	<root id="root">
+		<bean id="BView" url="sandbox://button.swf">
+			<property name="x" value="5" />
+			<property name="y" value="50" />
+		</bean>
+		
+		<bean id="CView" type="flash.display.Sprite">
+			<property name="x" value="60" />
+			<property name="y" value="50" />
+			
+			<method-call name="graphics.beginFill">
+				<argument type="uint" value="0xFF0000" />
+				<argument type="Number" value="1" />
+			</method-call>
+			<method-call name="graphics.drawRect">
+				<argument type="Number" value="0" />
+				<argument type="Number" value="0" />
+				<argument type="Number" value="50" />
+				<argument type="Number" value="25" />
+			</method-call>
+			<method-call name="graphics.endFill" />
+			
+			<property name="buttonMode" type="Boolean" value="true" />
+		</bean>
+	</root>
+	
+</beans>

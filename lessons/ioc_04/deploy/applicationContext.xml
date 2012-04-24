@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+	
+	<!-- FlashVars -->
+	<var id="culture" type="String" value="fr" />
+	
+	<!-- Loads library -->
+	<lib url="sandbox://pixlib.swf" />
+	
+	<!-- ${local} is replace using runner processing FlashVar replacement -->
+	<rsc id="gridObject" 
+		url="sandbox://${local}/grid.png" 
+		type="binary" 
+		deserializer-class="net.pixlib.encoding.PXDisplayDeserializer"/>
+	
+	<!-- ${lang} is replace using runner processing Variable replacement -->
+	<rsc id="gridObject2" 
+		url="sandbox://${lang}/background.png" 
+		type="binary" 
+		deserializer-class="net.pixlib.encoding.PXDisplayDeserializer"/>
+	
+	<dll url="sandbox://pluginA.swf" />
+	<bean id="PluginA" type="pluginA.PluginA" />
+	
+	<!-- Object, attributes are transformed as object property-->
+	<bean id="format" fontFamily="Arial" fontSize="100" type="Object">
+		<property name="rank" value="First" />
+	</bean>
+</beans>

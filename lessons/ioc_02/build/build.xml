@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="Pixlib Extension::PixIOC lesson02" basedir="../">
+
+	<!-- Compile IoC Assembler  -->
+	<target name="assembler.compile()" description="Compile IoC Assembler">
+		<fdt.loadProjectProperties />
+		<fdt.launch.application 
+			projectname="${FDTProject}" 
+			mainclass="src/runner/SampleRunner.as" 
+			target="deploy/assembler.swf" 
+		/>
+	</target>
+	
+	<!-- Compile PluginA DLL -->
+	<target name="pluginA.compile()" description="pluginA.compile()">
+		<antcall target="dll.compile()">
+			<param name="includes" value="pluginA.PluginA" />
+			<param name="name" value="pluginA" />
+		</antcall>
+	</target>
+
+	<!-- Compile PluginB DLL -->
+	<target name="pluginB.compile()" description="pluginB.compile()">
+		<antcall target="dll.compile()">
+			<param name="includes" value="pluginB.PluginB" />
+			<param name="name" value="pluginB" />
+		</antcall>
+	</target>
+	
+	<!-- Compile DLL -->
+	<target name="dll.compile()">
+		<echo file="src/DLLEntryPoint.as">package
+		{
+		        import flash.display.Sprite;
+		        public class DLLEntryPoint extends Sprite {}
+		}
+		</echo>
+		
+		<condition property="includes.source" value="-includes=${includes}" else="">
+			<isset property="includes" />
+		</condition>
+		
+		<fdt.loadProjectProperties />
+		<fdt.launch.application 
+			projectname="${FDTProject}" 
+			mainclass="src/DLLEntryPoint.as" 
+			target="deploy/${name}.swf" 
+			compilerarguments="${includes.source}"
+		/>
+		
+		<delete file="src/DLLEntryPoint.as" />
+	</target>
+
+</project>
